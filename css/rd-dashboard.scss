@@ -1,0 +1,516 @@
+$wp-color: #0073aa;
+$wp-black: #191e23;
+$wp-borde: #e4e4e4;
+
+*,*:before, *:after{
+    box-sizing: border-box;
+}
+html.wp-toolbar{
+    padding-top: 0;
+}
+a{
+    color: $wp-color;
+}
+button, button:hover, button:focus, button:active, a, a:hover, a:focus, a:active{
+    outline: none;
+    box-shadow: 0 0 0;
+}
+#wpwrap{
+    #adminmenumain{
+        position: relative;
+        z-index: 999999;
+        & > a{
+            display: none;
+        }
+        #adminmenuback, #adminmenuwrap, #adminmenuwrap #adminmenu, #adminmenuwrap #adminmenu .wp-submenu{
+            width: 100%;
+            max-width: 220px;
+        }
+        #adminmenuback{
+            background-image: url('../img/noise-bg.jpg');
+            background-repeat: repeat;
+        }
+        #adminmenuwrap{
+            top: 0;
+            ul#adminmenu{
+                background-color: transparent;
+                padding: 12px;
+                margin: 0;
+                width: 100%;
+                li{
+                    background-color: transparent !important;
+                    a{
+                        padding: 4px;
+                        border-radius: 9px;
+                        transition: color .4s ease, background .4s ease;
+                        &:after{
+                            display: none;
+                        }
+                        &.wp-has-current-submenu{
+                            background-color: $wp-color;
+                        }
+                        .update-plugins{
+                            background-color: #23282d;
+                            margin-left: 10px;
+                            position: absolute;
+                            right: 15px;
+                            color: #ffffff;
+                            box-shadow: 0 0 0 1px #3f4750;
+                        }
+                        
+                    }
+                    &:not(.wp-has-current-submenu):hover > a{
+                        background-color: $wp-black;
+                    }
+                    &.current:hover > a, &.wp-has-current-submenu:hover > a{
+                        background-color: $wp-color;
+                    }
+                    &:after{
+                        display: none;
+                    }
+                    .wp-submenu{
+                        background-color: #fff;
+                        left: calc(100% + 20px);
+                        opacity: 0;
+                        top: 0;
+                        padding: 0;
+                        visibility: hidden;
+                        border-radius: 9px;
+                        transform: scale(.95);
+                        box-shadow: 0px 3px 8px 0px #23282d1f;
+                        transition: opacity .3s ease, visibility .4s ease, transform .4s;
+                    }
+                    &:hover{
+                        .wp-submenu{
+                            visibility: visible;
+                            opacity: 1;
+                            transform: scale(1);
+                        }
+                    }
+                    &.wp-has-current-submenu{
+                        ul.wp-submenu{
+                            background-color: transparent;
+                            position: relative;
+                            opacity: 1;
+                            left: 0;
+                            padding: 0;
+                            border-radius: 0;
+                            margin-top: 10px;
+                            margin-bottom: 10px;
+                            visibility: visible;
+                            box-shadow: 0 0 0;
+                            transform: scale(1);
+                            &:before{
+                                background-color: #3f4750;
+                                position: absolute;
+                                content: "";
+                                left: 0;
+                                top: 0;
+                                width: 2px;
+                                height: 100%;
+                                z-index: -1;
+                            }
+                            li{
+                                a{
+                                    border-radius: 0;
+                                    padding: 8px 20px;
+                                    border-left: 2px solid transparent;
+                                    transition: border .2s ease;
+                                    &:hover{
+                                        background-color: transparent;
+                                        border-color: $wp-color;
+                                        color: #fff;
+                                    }
+                                }
+                                &.current{
+                                    a{
+                                        border-color: $wp-color;
+                                        color: #fff;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    &:not(.wp-has-current-submenu){
+                        .wp-submenu{
+                            padding: 10px;
+                            li{
+                                a{
+                                    color: #545e69;
+                                    padding: 10px;
+                                    &:hover{
+                                        background-color: #e6ecef;
+                                        color: $wp-color;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    &.wp-menu-separator{
+                        .separator{
+                            background-color: #3f4750;
+                            height: 1px;
+                            margin-top: 15px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    #wpcontent{
+        margin-left: 220px;
+        padding-right: 20px;
+        padding-top: 20px;
+        #wpadminbar{
+            background-color: #fff;
+            position: relative;
+            border-radius: 9px;
+            padding: 15px;
+            height: auto;
+            margin-bottom: 20px;
+            border: 1px solid $wp-borde;
+            .quicklinks{
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: space-between;
+                ul{
+                    li{
+                        float: none;
+                        display: inline-block;
+                        vertical-align: middle;
+                        margin-right: 10px;
+                        &:last-of-type{
+                            margin-right: 0;
+                        }
+                        &#wp-admin-bar-menu-toggle{
+                            display: none;
+                        }
+                        &#wp-admin-bar-user-info{
+                            img{
+                                display: none;
+                            }
+                            .display-name{
+                                height: auto;
+                                line-height: inherit;
+                            }
+                        }
+                        &#wp-admin-bar-my-account{
+                            img{
+                                border: 0;
+                                border-radius: 35px;
+                            }
+                        }
+                        a{
+                            background-color: transparent;
+                            color: #797979;
+                            border-radius: 9px;
+                            transition: color .4s ease, background .4s ease;
+                            .ab-label{
+                                color: #797979;
+                                opacity: 1;
+                                transition: color .4s ease;
+                            }
+                            &:before{
+                                color: #525252;
+                                transition: color .4s ease;
+                            }
+                            .ab-icon{
+                                &:before{
+                                    color: #525252;
+                                    transition: color .4s ease;
+                                }
+                            }
+                            &:hover{
+                                background-color: #e6ecef;
+                                color: $wp-color;
+                                &:before{
+                                    color: $wp-color;
+                                }
+                                .ab-label{
+                                    color: $wp-color;
+                                }
+                                .ab-icon{
+                                    &:before{
+                                        color: $wp-color;
+                                    }
+                                }
+                            }
+                        }
+                        .ab-sub-wrapper{
+                            background-color: #fff;
+                            border-radius: 9px;
+                            top: calc(100% + 10px);
+                            box-shadow: 0px 3px 8px 0px #23282d1f;
+                            ul{
+                                padding: 10px 0;
+                                li{
+                                    margin: 0;
+                                    padding: 0 10px;
+                                    a{
+                                        padding: 6px 10px;
+                                        transition: color .4s ease, background .4s ease;
+                                    }
+                                }
+                            }
+                            #wp-admin-bar-wp-logo-external{
+                                background-color: transparent;
+                                border-top: 1px solid $wp-borde;
+                                margin-top: 10px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        #wpbody{
+            #wpbody-content{
+                #screen-meta, #screen-meta-links, .wrap{
+                    margin: 0;
+                }
+                #screen-meta-links{
+                    width: 100%;
+                    text-align: right;
+                    & > div{
+                        float: none;
+                        margin: 0;
+                        display: inline-block;
+                        button{
+                            padding: 8px 12px;
+                            height: auto;
+                            box-shadow: 0 0 0 0;
+                            border: 1px solid $wp-borde;
+                            border-radius: 9px 9px 9px 9px;
+                            transition: border .4s ease, background .4s ease;
+                            &:after{
+                                padding-right: 0;
+                            }
+                            &.screen-meta-active{
+                                border-radius: 0 0 9px 9px;
+                            }
+                        }
+                    }
+                    #screen-options-link-wrap, #contextual-help-link-wrap{
+                        margin-right: 15px;
+                    }
+                }
+                #screen-meta{
+                    margin-bottom: -1px;
+                    border: 1px solid $wp-borde;
+                    border-radius: 18px;
+                    box-shadow: 0 0 0;
+                    #contextual-help-wrap{
+                        #contextual-help-back{
+                            border-color: $wp-borde;
+                        }
+                        #contextual-help-columns{
+                            .contextual-help-tabs{
+                                ul{
+                                    li{
+                                        border: 0;
+                                        margin: 0;
+                                        box-shadow: 0 0 0;
+                                        a{
+                                            color: #797979;
+                                            padding: 8px 12px;
+                                            border: $wp-borde;
+                                            box-shadow: 0 0 0;
+                                        }
+                                        &.active{
+                                            border: 0;
+                                            a{
+                                                color: $wp-color;
+                                                box-shadow: 1px 0 0 0 $wp-color;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .wrap{
+                    #welcome-panel{
+                        border-radius: 18px;
+                        border-color: $wp-borde;
+                        a.welcome-panel-close{
+                            border-radius: 9px;
+                            font-weight: 600;
+                            color: #8899a0;
+                            padding-left: 30px;
+                            &:before{
+                                color: #c8d3d8;
+                                left: 5px;
+                                top: calc(50% + 1px);
+                                transform: translateY(-50%);
+                            }
+                            &:hover{
+                                background-color: rgba(#f44336, .2);
+                                color: #f44336;
+                                &:before{
+                                    color: #f44336;
+                                }
+                            }
+                        }
+                        .welcome-panel-column{
+                            a.button{
+                                background-color: transparent;
+                                padding: 10px 30px;
+                                border-radius: 35px;
+                                color: #0073aa;
+                                font-weight: 600;
+                                min-height: auto;
+                                border: 2px solid $wp-color;
+                            }
+                            ul{
+                                li{
+                                    a{
+                                        color: #8899a0;
+                                        &:before{
+                                            color: #c8d3d8;
+                                        }
+                                        &:hover{
+                                            color: #5a676d;
+                                            text-decoration: underline;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    #dashboard-widgets-wrap{
+                        #dashboard-widgets{
+                            .postbox{
+                                border-color: $wp-borde;
+                                border-radius: 18px;
+                                padding: 15px;
+                                .postbox-header{
+                                    margin-bottom: 25px;
+                                    padding-bottom: 15px;
+                                    border-color: $wp-borde;
+                                    h2{
+                                        padding-left: 0;
+                                    }
+                                    .handle-actions{
+                                        button{
+                                            width: 36px;
+                                            border-radius: 35px;
+                                            box-shadow: 0 0 0;
+                                            margin-right: 6px;
+                                            transition: background .4s ease;
+                                            &:hover{
+                                                background-color: #edf0f2;
+                                            }
+                                            &:last-of-type{
+                                                margin-right: 0;
+                                            }
+                                        }
+                                    }
+                                }
+                                &.closed{
+                                    .postbox-header{
+                                        margin-bottom: 0;
+                                        padding-bottom: 0;
+                                        border-color: #fff;
+                                    }
+                                }
+                                .inside{
+                                    form{
+                                        & > div{
+                                            margin-bottom: 20px;
+                                        }
+                                        label{
+                                            margin-bottom: 10px;
+                                        }
+                                        input, textarea{
+                                            padding: 4px 10px;
+                                            border-radius: 0;
+                                            box-shadow: 0 0 0;
+                                            border-radius: 7px;
+                                            border-color: #e4e4e4;
+                                            transition: border .4s ease;
+                                            &:hover{
+                                                border-color: #94c4db;
+                                            }
+                                        }
+                                        textarea{
+                                            padding-top: 6px;
+                                            padding-bottom: 6px;
+                                        }
+                                        input[type="submit"]{
+                                            border-radius: 9px;
+                                            border: 0;
+                                        }
+                                        .textarea-wrap{
+                                            margin-bottom: 0;
+                                        }
+                                    }
+                                }
+                                &#dashboard_right_now{
+                                    .inside{
+                                        ul{
+                                            li{
+                                                a{
+                                                    color: #8899a0;
+                                                    &:before{
+                                                        color: #7e898e;
+                                                    }
+                                                    &:hover{
+                                                        color: #5a676d;
+                                                        text-decoration: underline;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            .meta-box-sortables.empty-container{
+                                outline: 3px dashed #cecece;
+                                &::after{
+                                    color: #a6a6a6;
+                                }
+                            }
+                            @media only screen and (min-width: 1500px) and (max-width: 1800px){
+                                #column4-sortables.empty-container{
+                                    outline: none;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.is-dragging-metaboxes{
+    #wpwrap{
+        #wpcontent{
+            #wpbody{
+                #wpbody-content{
+                    .wrap{
+                        #dashboard-widgets-wrap{
+                            #dashboard-widgets{
+                                .meta-box-sortables, .meta-box-sortables.empty-container{
+                                    outline: 3px dashed #999999;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+#file-editor-warning{
+    .notification-dialog-background{
+        background-color: #485054;
+    }
+    .notification-dialog{
+        border-radius: 18px;
+        box-shadow: 0 0 0;
+    }
+}
+body.folded{
+    @import 'blocks/adminmenumain';
+}

@@ -1,0 +1,117 @@
+#wpwrap{
+    #wpcontent{
+        margin-left: 60px;
+        #wpadminbar{
+            position: relative;
+        }
+    }
+    #adminmenumain{
+        position: relative;
+        z-index: 999999;
+        #adminmenuback, #adminmenuwrap, #adminmenuwrap #adminmenu, #adminmenuwrap #adminmenu .wp-submenu{
+            padding: 0;
+            max-width: 60px;
+        }
+        #adminmenuwrap{
+            ul#adminmenu{
+                li{
+                    margin: 10px 0;
+                    width: 100%;
+                    display: block;
+                    text-align: center;
+                    a{
+                        width: 38px;
+                        height: 38px;
+                        display: inline-flex;
+                        justify-content: center;
+                        align-items: center;
+                        .wp-menu-image{
+                            position: relative;
+                            width: auto;
+                            height: auto;
+                            &:before{
+                                padding: 0;
+                            }
+                        }
+                        
+                    }
+                    &.current:hover > a, &.wp-has-current-submenu:hover > a{
+                        background-color: $wp-color;
+                    }
+                    .wp-submenu{
+                        background-color: #fff;
+                        position: absolute;
+                        left: 99%;
+                        opacity: 0;
+                        top: 0;
+                        padding: 10px;
+                        visibility: hidden;
+                        border-radius: 9px;
+                        transform: scale(.95);
+                        left: calc(100% + 10px);
+                        box-shadow: 0px 3px 8px 0px #23282d1f;
+                        transition: opacity .3s ease, visibility .4s ease, left .4s ease, transform .4s;
+                        .wp-submenu-head{
+                            display: none;
+                        }
+                        li{
+                            margin: 0;
+                            text-align: left;
+                            a{
+                                display: block;
+                                width: 100%;
+                                height: auto;
+                                color: #545e69;
+                                &:hover{
+                                    background-color: #e6ecef;
+                                    color: $wp-color;
+                                }
+                            }
+                        }
+                    }
+                    &:hover{
+                        .wp-submenu{
+                            visibility: visible;
+                            opacity: 1;
+                            transform: scale(1);
+                        }
+                    }
+                    &.wp-has-current-submenu{
+                        ul.wp-submenu{
+                            margin: 0;
+                            &:before{
+                                display: none;
+                            }
+                            li{
+                                margin-bottom: 5px;
+                                a{
+                                    border-radius: 9px;
+                                    border: 0;
+                                    transition: background .4s ease, color .4s ease;
+                                }
+                                &.current{
+                                    a{
+                                        background-color: $wp-color;
+                                        color: #fff;
+                                    }
+                                }
+                                &:last-of-type{
+                                    margin-bottom: 0;
+                                }
+                            }
+                        }
+                    }
+                    &#collapse-menu{
+                        button{
+                            text-align: center;
+                            .collapse-button-icon{
+                                position: relative;
+                                display: inline-block;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
