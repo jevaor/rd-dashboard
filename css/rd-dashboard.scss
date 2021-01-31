@@ -595,7 +595,9 @@ button, button:hover, button:focus, button:active, a, a:hover, a:focus, a:active
                                 }
                             }
                             .meta-box-sortables.empty-container{
-                                outline: 3px dashed #cecece;
+                                outline: none;
+                                border-radius: 9px;
+                                border: 3px dashed #cecece;
                                 &::after{
                                     color: #a6a6a6;
                                 }
@@ -603,6 +605,7 @@ button, button:hover, button:focus, button:active, a, a:hover, a:focus, a:active
                             @media only screen and (min-width: 1500px) and (max-width: 1800px){
                                 #column4-sortables.empty-container{
                                     outline: none;
+                                    border: 0;
                                 }
                             }
                         }
@@ -743,20 +746,93 @@ button, button:hover, button:focus, button:active, a, a:hover, a:focus, a:active
                             input, select, textarea{
                                 border-color: #e4e4e4;
                                 margin-bottom: 5px;
+                                box-shadow: 0 0 0;
+                                &:hover, &:focus{
+                                    color: $wp-black;
+                                    border-color: #94c4db;
+                                }
                             }
                         }
                     }
                     .form-table{
+                        border-collapse: separate;
+                        border-spacing: 0 15px;
+                        tbody{
+                            tr{
+                                th{
+                                    padding: 10px 20px;
+                                    vertical-align: middle;
+                                    transition: border .4s ease;
+                                    border-right: 1px solid #e4e4e4;
+                                }
+                                td{
+                                    padding-left: 25px;
+                                }
+                                &:hover{
+                                    th{
+                                        border-color: #94c4db;
+                                    }
+                                }
+                            }
+                        }
                         input:not([type="checkbox"]), select, textarea{
                             padding: 5px 10px;
                             border-radius: 9px;
+                            box-shadow: 0 0 0;
                             border-color: $wp-borde;
+                            transition: border .4s ease, color .2s ease;
+                            &:hover, &:focus{
+                                color: #23282d;
+                                border-color: #94c4db;
+                            }
                         }
                         input[type="checkbox"]{
+                            box-shadow: 0 0 0;
                             border-color: $wp-borde;
+                            &:hover, &:focus{
+                                border-color: #94c4db;
+                            }
                         }
                         select{
                             padding-right: 25px;
+                        }
+                        &.tools-privacy-policy-page{
+                            input[type="submit"]{
+                                background-color: $wp-color;
+                                color: #fff;
+                                box-shadow: 0 0 0;
+                                border: 1px solid $wp-color;
+                            }
+                        }
+                    }
+                    textarea#ping_sites{
+                        padding: 5px 10px;
+                        border-radius: 9px;
+                        box-shadow: 0 0 0;
+                        border-color: $wp-borde;
+                        transition: border .4s ease, color .2s ease;
+                        &:hover, &:focus{
+                            color: $wp-black;
+                            border-color: #94c4db;
+                        }
+                    }
+                    .submit{
+                        margin-bottom: 0;
+                        padding: 30px 0;
+                        text-align: center;
+                        margin-top: 40px;
+                        border-top: 1px solid $wp-borde;
+                        input[type="submit"]{
+                            background-color: transparent;
+                            padding: 5px 15px;
+                            color: #4caf50;
+                            border-radius: 9px;
+                            border-color: #4caf50;
+                            transition: background .4s ease, color .2s ease;
+                            &:hover{
+                                background-color: #4caf50;
+                                color: #fff;
+                            }
                         }
                     }
                 }
@@ -773,7 +849,8 @@ button, button:hover, button:focus, button:active, a, a:hover, a:focus, a:active
                         #dashboard-widgets-wrap{
                             #dashboard-widgets{
                                 .meta-box-sortables, .meta-box-sortables.empty-container{
-                                    outline: 3px dashed #999999;
+                                    outline: none;
+                                    border: 3px dashed $wp-color;
                                 }
                             }
                         }
