@@ -28,11 +28,33 @@ add_action( 'admin_enqueue_scripts', 'new_admin_style' );
 function new_admin_js() {
 
 
+    // wp_enqueue_script( 'simplebar', plugin_dir_url( __FILE__ ) . '../js/simplebar.min.js', array(), null, false );
+	// wp_script_add_data( 'simplebar', 'async', true );
+
 	wp_enqueue_script( 'rd', plugin_dir_url( __FILE__ ) . '../js/dashboard.js', array(), null, false );
 	wp_script_add_data( 'rd', 'async', true );
 
 }
 add_action( 'admin_enqueue_scripts', 'new_admin_js' );
+
+// REMOVE DASHBOARD WIDGETS
+
+function remove_dashboard_widgets() {
+    global $wp_meta_boxes;
+ 
+    unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press']);
+    unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_incoming_links']);
+    unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_right_now']);
+    unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_plugins']);
+    unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_recent_drafts']);
+    unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_recent_comments']);
+    unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']);
+    unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_secondary']);
+    remove_meta_box( 'e-dashboard-overview', 'dashboard', 'normal');
+ 
+}
+ 
+add_action('wp_dashboard_setup', 'remove_dashboard_widgets' );  
 
 // add_action( 'admin_init', 'wpse_136058_debug_admin_menu' );
 

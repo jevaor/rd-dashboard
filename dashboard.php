@@ -2,7 +2,7 @@
 /**
  * Plugin RD Dashboard
  *
- * @package           PluginPackage
+ * @package           Versatile
  * @author            Jonatan Vargas
  * @copyright         2020 Desarrollandolo
  * @license           MIT
@@ -11,12 +11,12 @@
  * Plugin Name:       RD Dashboard
  * Plugin URI:        https://vaor.me/rd-dashboard
  * Description:       Another way to look the dashboard
- * Version:           0.2
+ * Version:           0.4
  * Requires at least: 5.2
  * Requires PHP:      7.2
  * Author:            Jonatan Vargas
  * Author URI:        https://vaor.me
- * Text Domain:       plugin-slug
+ * Text Domain:       vaor
  * License:           MIT
  * License URI:       https://raw.githubusercontent.com/jevaor/rd-dashboard/master/LICENSE
  */

@@ -1,6 +1,22 @@
-$wp-color: #0073aa;
-$wp-black: #191e23;
-$wp-borde: #e4e4e4;
+$wp-color: #FFEA30;
+$wp-black: #1F2128;
+$wp-borde: #dee1e8;
+
+$body-color: #e0e2ea;
+$link-color: #1c80b0;
+
+
+
+$color-separator: #2f323b;
+
+$color-menu: #8a8e9c;
+$fondo-hover-menu: $color-separator;
+$fondo-hover-submenu: #e0e2ea;
+
+$quicklink-menu-color: #70737d;
+
+
+$button-text-color: #766d12;
 
 *,*:before, *:after{
     box-sizing: border-box;
@@ -8,13 +24,149 @@ $wp-borde: #e4e4e4;
 html.wp-toolbar{
     padding-top: 0;
 }
-a{
-    color: $wp-color;
-}
-button, button:hover, button:focus, button:active, a, a:hover, a:focus, a:active, .wrap .page-title-action:focus, .wp-core-ui .button:focus{
+a, a:hover{
+    color: $link-color;
     outline: none;
-    box-shadow: 0 0 0 0;
+    box-shadow: 0 0 0;
 }
+body{
+    background-color: $body-color;
+    overflow-x: hidden;
+}
+#dashboard-widgets .button-link,
+#dashboard-widgets li a,
+.community-events-footer a{
+    box-shadow: 0 0 0;
+}
+.wp-core-ui{
+    .button,
+    .button-primary,
+    .button-secondary{
+        background-color: $wp-color;
+        color: $button-text-color;
+        outline: none;
+        border: 0;
+        padding: 5px 10px;
+        border-radius: 9px;
+        box-shadow: 0 0 0;
+        transition: background .4s ease, color .4s ease;
+        .dashicons{
+            color: $button-text-color;
+            line-height: 1.3;
+            transition: color .4s ease;
+        }
+        &:hover{
+            background-color: $wp-black;
+            color: #fff;
+            .dashicons{
+                color: #fff;
+            }
+        }
+    }
+    .notice, .woocommerce-message{
+        background-color: transparent;
+        padding: 10px;
+        overflow: inherit;
+        border: 0;
+        margin: 0;
+        padding-left: 20px;
+        border-radius: 9px;
+        margin-top: 15px;
+        margin-bottom: 10px;
+        box-shadow: 0 0 0 0;
+        .notice-dismiss{
+            background-color: $wp-borde;
+            position: absolute;
+            padding: 6px;
+            font-size: 0;
+            top: -10px;
+            right: -10px;
+            margin: 0;
+            border-radius: 35px;
+            box-shadow: 0 0 0;
+            border: 0;
+            &:before{
+                top: 0;
+                left: 0;
+                color: #fff;
+            }
+        }
+        .notice-dismiss{
+            background-color: transparent;
+            box-shadow: 0 0 0 5px #fff;
+            &::before{
+                color: #fff;
+            }
+            &:hover::before{
+                color: #fff;
+            }
+        }
+        p{
+            color: #fff;
+            a{
+                color: #fff;
+            }
+        }
+        &.notice-success{
+            background-color: #4caf50;
+            .notice-dismiss{
+                background-color: #4caf50;
+            }
+        }
+        &.notice-error{
+            background-color: #cb4d44;
+            .notice-dismiss{
+                background-color: #cb4d44;
+            }
+        }
+        &.notice-warning{
+            background-color: #e1a913;
+            .notice-dismiss:hover{
+                background-color: #e1a913;
+            }
+        }
+        &.notice-info{
+            background-color: #2da1be;
+            .notice-dismiss:hover{
+                background-color: #2da1be;
+            }
+        }
+        &.woocommerce-message{
+            background-color: #cc99c2;
+            .notice-dismiss:hover{
+                background-color: #cc99c2;
+            }
+        }
+        &.elementor-message{
+            background-color: #bb77ae;
+            padding: 20px;
+            .elementor-message-icon{
+                .e-logo-wrapper{
+                    background-color: #fff;
+                    i{
+                        color: #bb77ae;
+                    }
+                }
+            }
+            .elementor-message-content{
+                .elementor-message-actions{
+                    a{
+                        background-color: #fff;
+                        color: $wp-black;
+                        &:hover{
+                            background-color: $wp-black;
+                            color: #fff;
+                        }
+                    }
+                }
+            }
+            .notice-dismiss{
+                background-color: #bb77ae;
+            }
+        }
+    }
+}
+
 #wpwrap{
     #adminmenumain{
         position: relative;
@@ -24,14 +176,17 @@ button, button:hover, button:focus, button:active, a, a:hover, a:focus, a:active
         }
         #adminmenuback, #adminmenuwrap, #adminmenuwrap #adminmenu, #adminmenuwrap #adminmenu .wp-submenu{
             width: 100%;
-            max-width: 220px;
+            max-width: 250px;
         }
         #adminmenuback{
-            background-image: url('../img/noise-bg.jpg');
+            background-color: $wp-black;
             background-repeat: repeat;
+            height: 100%;
         }
         #adminmenuwrap{
-            top: 0;
+            background-color: transparent;
+            position: absolute !important;
+            top: 0 !important;
             ul#adminmenu{
                 background-color: transparent;
                 padding: 12px;
@@ -40,30 +195,42 @@ button, button:hover, button:focus, button:active, a, a:hover, a:focus, a:active
                 li{
                     background-color: transparent !important;
                     a{
+                        color: $color-menu;
                         padding: 4px;
                         border-radius: 9px;
                         transition: color .4s ease, background .4s ease;
                         &:after{
                             display: none;
                         }
-                        &.wp-has-current-submenu{
-                            background-color: $wp-color;
+                        .wp-menu-image{
+                            &.svg{
+                                filter: saturate(0);
+                            }
+                        }
+                        &.wp-has-current-submenu, &:hover, &:focus{
+                            background-color: $fondo-hover-menu;
+                            color: #fff;
+                            .wp-menu-image{
+                                &:before{
+                                    color: $wp-color;
+                                }
+                                &.svg{
+                                    filter: saturate(0) brightness(2);
+                                }
+                            }
+                        }
+                        .wp-menu-image:before{
+                            color: $color-menu;
                         }
                         .update-plugins{
-                            background-color: #23282d;
+                            background-color: $wp-color;
                             margin-left: 10px;
                             position: absolute;
                             right: 15px;
-                            color: #ffffff;
-                            box-shadow: 0 0 0 1px #3f4750;
+                            color: $wp-black;
+                            box-shadow: 0 0 0 1px $wp-color;
                         }
                         
-                    }
-                    &:not(.wp-has-current-submenu):hover > a{
-                        background-color: $wp-black;
-                    }
-                    &.current:hover > a, &.wp-has-current-submenu:hover > a{
-                        background-color: $wp-color;
                     }
                     &:after{
                         display: none;
@@ -79,13 +246,6 @@ button, button:hover, button:focus, button:active, a, a:hover, a:focus, a:active
                         transform: scale(.95);
                         box-shadow: 0px 3px 8px 0px #23282d1f;
                         transition: opacity .3s ease, visibility .4s ease, transform .4s;
-                    }
-                    &:hover{
-                        .wp-submenu{
-                            visibility: visible;
-                            opacity: 1;
-                            transform: scale(1);
-                        }
                     }
                     &.wp-has-current-submenu{
                         ul.wp-submenu{
@@ -116,7 +276,7 @@ button, button:hover, button:focus, button:active, a, a:hover, a:focus, a:active
                                     padding: 8px 20px;
                                     border-left: 2px solid transparent;
                                     transition: border .2s ease;
-                                    &:hover{
+                                    &:hover, &:focus{
                                         background-color: transparent;
                                         border-color: $wp-color;
                                         color: #fff;
@@ -124,6 +284,7 @@ button, button:hover, button:focus, button:active, a, a:hover, a:focus, a:active
                                 }
                                 &.current{
                                     a{
+                                        background-color: transparent;
                                         border-color: $wp-color;
                                         color: #fff;
                                     }
@@ -132,25 +293,70 @@ button, button:hover, button:focus, button:active, a, a:hover, a:focus, a:active
                         }
                     }
                     &:not(.wp-has-current-submenu){
-                        .wp-submenu{
+                        ul.wp-submenu{
                             padding: 10px;
                             li{
                                 a{
-                                    color: #545e69;
+                                    color: #9b9da7;
                                     padding: 10px;
                                     &:hover{
-                                        background-color: #e6ecef;
-                                        color: $wp-color;
+                                        background-color: $fondo-hover-submenu;
+                                        color: #696d7d;
+                                        &.svg{
+                                            filter: saturate(0) brightness(2);
+                                        }
                                     }
+                                    .update-plugins{
+                                        background-color: #868996;
+                                        right: 20px;
+                                        color: #ffffff;
+                                        margin-left: 0;
+                                        box-shadow: 0 0 0 1px #868996;
+                                    }
+                                    
+                                }
+                            }
+                        }
+                        
+                        &:hover{
+                            div.wp-menu-image:before{
+                                color: $wp-color;
+                            }
+                            .wp-submenu{
+                                visibility: visible;
+                                opacity: 1;
+                                transform: scale(1);
+                            }
+                        }
+                    }
+                    &.current, &:hover{
+                        & > a{
+                            background-color: $fondo-hover-menu;
+                            color: #fff;
+                            .wp-menu-image{
+                                &:before{
+                                    color: $wp-color;
+                                }
+                                &.svg{
+                                    filter: saturate(0) brightness(2);
                                 }
                             }
                         }
                     }
                     &.wp-menu-separator{
                         .separator{
-                            background-color: #3f4750;
+                            background-color: $color-separator;
                             height: 1px;
                             margin-top: 15px;
+                        }
+                    }
+                    &#collapse-menu{
+                        button{
+                            color: $color-menu;
+                            transition: color .2s ease;
+                            &:hover, &:focus{
+                                color: $wp-color;
+                            }
                         }
                     }
                 }
@@ -158,17 +364,14 @@ button, button:hover, button:focus, button:active, a, a:hover, a:focus, a:active
         }
     }
     #wpcontent{
-        margin-left: 220px;
-        padding-right: 20px;
-        padding-top: 20px;
+        margin-left: 250px;
+        padding: 0;
         #wpadminbar{
             background-color: #fff;
             position: relative;
-            border-radius: 9px;
-            padding: 15px;
+            padding: 0 20px;
             height: auto;
-            margin-bottom: 20px;
-            border: 1px solid $wp-borde;
+            border-bottom: 1px solid $wp-borde;
             .quicklinks{
                 display: flex;
                 flex-wrap: wrap;
@@ -179,7 +382,7 @@ button, button:hover, button:focus, button:active, a, a:hover, a:focus, a:active
                         float: none;
                         display: inline-block;
                         vertical-align: middle;
-                        margin-right: 10px;
+                        margin-right: 5px;
                         &:last-of-type{
                             margin-right: 0;
                         }
@@ -203,53 +406,78 @@ button, button:hover, button:focus, button:active, a, a:hover, a:focus, a:active
                         }
                         a{
                             background-color: transparent;
-                            color: #797979;
-                            border-radius: 9px;
-                            transition: color .4s ease, background .4s ease;
+                            color: $color-menu;
+                            padding: 18px 16px;
+                            transition: color .4s ease, box-shadow .4s ease;
                             .ab-label{
-                                color: #797979;
+                                color: $color-menu;
                                 opacity: 1;
                                 transition: color .4s ease;
                             }
                             &:before{
-                                color: #525252;
+                                color: $color-menu;
                                 transition: color .4s ease;
                             }
                             .ab-icon{
                                 &:before{
-                                    color: #525252;
+                                    color: $color-menu;
                                     transition: color .4s ease;
                                 }
                             }
+                            .svg{
+                                filter: saturate(0) contrast(.5);
+                            }
                             &:hover{
-                                background-color: #e6ecef;
-                                color: $wp-color;
-                                &:before{
-                                    color: $wp-color;
+                                background-color: transparent;
+                                color: $wp-black;
+                                box-shadow: 0 1px 0 0 $wp-black;
+                                .svg{
+                                    filter: saturate(0);
                                 }
                                 .ab-label{
-                                    color: $wp-color;
+                                    color: $wp-black;
+                                }
+                                &:before{
+                                    color: $wp-black;
                                 }
                                 .ab-icon{
                                     &:before{
-                                        color: $wp-color;
+                                        color: $wp-black;
                                     }
                                 }
+                            }
+                            .wp-ui-notification{
+                                padding: 0 !important;
+                                display: inline-flex;
+                                width: 18px;
+                                height: 18px;
+                                padding: 0;
+                                color: #fff;
+                                margin-left: auto;
+                                border-radius: 35px;
+                                align-items: center;
+                                justify-content: center;
                             }
                         }
                         .ab-sub-wrapper{
                             background-color: #fff;
-                            border-radius: 9px;
-                            top: calc(100% + 10px);
+                            border-radius: 0;
+                            top: calc(100% + 1px);
                             box-shadow: 0px 3px 8px 0px #23282d1f;
                             ul{
                                 padding: 10px 0;
                                 li{
+                                    display: block;
                                     margin: 0;
                                     padding: 0 10px;
                                     a{
+                                        display: flex;
+                                        align-items: center;
                                         padding: 6px 10px;
-                                        transition: color .4s ease, background .4s ease;
+                                        transition: color .4s ease;
+                                        &:hover{
+                                            box-shadow: 0 0 0;
+                                        }
                                     }
                                 }
                             }
@@ -259,53 +487,67 @@ button, button:hover, button:focus, button:active, a, a:hover, a:focus, a:active
                                 margin-top: 10px;
                             }
                         }
+                        &#wp-admin-bar-wp-logo{
+                            display: none;
+                        }
                     }
                 }
             }
         }
         #wpbody{
             #wpbody-content{
+                padding: 0;
                 #screen-meta, #screen-meta-links, .wrap{
                     margin: 0;
                 }
                 #screen-meta-links{
+                    background-color: #edeff4;
+                    padding: 18px 20px;
                     width: 100%;
+                    float: none;
                     text-align: right;
-                    margin-top: 20px;
+                    border-bottom: 1px solid $wp-borde;
                     & > div{
                         float: none;
                         margin: 0;
                         display: inline-block;
                         button{
-                            padding: 8px 12px;
+                            padding: 8px 18px;
                             height: auto;
                             box-shadow: 0 0 0 0;
                             border: 1px solid $wp-borde;
-                            border-radius: 9px 9px 9px 9px;
-                            transition: border .4s ease, background .4s ease;
+                            border-radius: 35px;
+                            transition: border .2s ease, background .2s ease, color .2s ease;
                             &:after{
                                 padding-right: 0;
+                                margin-top: 2px;
+                                vertical-align: middle;
                             }
                             &.screen-meta-active{
+                                background-color: $wp-color;
                                 border-color: $wp-color;
-                                color: $wp-color;
+                                color: $button-text-color;
                                 &:after{
-                                    color: $wp-color;
+                                    color: $button-text-color;
                                 }
                             }
                         }
                     }
-                    #screen-options-link-wrap, #contextual-help-link-wrap{
+                    #screen-options-link-wrap{
                         margin-right: 15px;
                     }
                 }
+                #screen-meta-links ~ #message, #screen-meta-links ~ .notice{
+                    display: none;
+                }
                 #screen-meta{
-                    margin-bottom: 20px;
-                    border: 1px solid $wp-borde;
-                    border-radius: 18px;
+                    margin: 0;
+                    border: 0;
                     box-shadow: 0 0 0;
+                    border-bottom: 1px solid $wp-borde;
                     #contextual-help-wrap{
                         #contextual-help-back{
+                            background-color: #fff;
                             border-color: $wp-borde;
                         }
                         #contextual-help-columns{
@@ -316,7 +558,7 @@ button, button:hover, button:focus, button:active, a, a:hover, a:focus, a:active
                                         margin: 0;
                                         box-shadow: 0 0 0;
                                         a{
-                                            color: #797979;
+                                            color: $color-menu;
                                             padding: 8px 12px;
                                             border: $wp-borde;
                                             box-shadow: 0 0 0;
@@ -324,8 +566,9 @@ button, button:hover, button:focus, button:active, a, a:hover, a:focus, a:active
                                         &.active{
                                             border: 0;
                                             a{
-                                                color: $wp-color;
-                                                box-shadow: 1px 0 0 0 $wp-color;
+                                                background-color: #edeff4;
+                                                color: $wp-black;
+                                                box-shadow: 1px 0 0 0 $wp-black;
                                             }
                                         }
                                     }
@@ -333,32 +576,63 @@ button, button:hover, button:focus, button:active, a, a:hover, a:focus, a:active
                             }
                         }
                     }
+                    #adv-settings{
+                        p{
+                            margin-top: 0;
+                        }
+                    }
                 }
                 .wrap{
                     background-color: #fff;
-                    border-radius: 18px;
-                    padding: 20px;
-                    border: 1px solid $wp-borde;
+                    padding: 30px;
+                    & > h1{
+                        margin-bottom: 40px;
+                    }
+                    input:not([type="submit"]), select, textarea{
+                        border-color: #e4e4e4;
+                        padding: 4px 10px;
+                        margin-bottom: 5px;
+                        box-shadow: 0 0 0;
+                        border-radius: 9px;
+                        transition: color .2s ease, border .4s ease;
+                        &:hover, &:focus{
+                            color: $wp-black;
+                            border-color: #94c4db;
+                        }
+                    }
+                    input[type="checkbox"]{
+                        border-radius: 4px;
+                    }
+                    select{
+                        border-color: #e4e4e4;
+                        box-shadow: 0 0 0 0;
+                        border-radius: 9px;
+                        padding-right: 25px;
+                    }
                     #welcome-panel{
-                        background-color: #e2edf2;
-                        border-radius: 18px;
+                        background-color: transparent;
+                        border-radius: 0;
                         border: 0;
+                        box-shadow: 0 0 0;
+                        margin-bottom: 30px;
+                        border-bottom: 1px solid $wp-borde;
                         a.welcome-panel-close{
                             border-radius: 9px;
                             font-weight: 600;
-                            color: #8899a0;
+                            color: #cb4d44;
                             padding-left: 30px;
+                            transition: background .4s ease;
                             &:before{
-                                color: #c8d3d8;
+                                color: #cb4d44;
                                 left: 5px;
                                 top: calc(50% + 1px);
                                 transform: translateY(-50%);
                             }
                             &:hover{
-                                background-color: $wp-color;
-                                color: #fff;
+                                background-color: rgba(#cb4d44, .2);
+                                color: #cb4d44;
                                 &:before{
-                                    color: #fff;
+                                    color: #cb4d44;
                                 }
                             }
                         }
@@ -367,20 +641,20 @@ button, button:hover, button:focus, button:active, a, a:hover, a:focus, a:active
                                 background-color: transparent;
                                 padding: 10px 30px;
                                 border-radius: 35px;
-                                color: #0073aa;
+                                color: #2da1be;
                                 font-weight: 600;
                                 min-height: auto;
-                                border: 2px solid $wp-color;
+                                border: 2px solid #2da1be;
                             }
                             ul{
                                 li{
                                     a{
-                                        color: #8899a0;
+                                        color: #585c68;
                                         &:before{
-                                            color: #c8d3d8;
+                                            color: #b8bcc7;
                                         }
                                         &:hover{
-                                            color: #5a676d;
+                                            color: $wp-black;
                                             text-decoration: underline;
                                         }
                                     }
@@ -433,24 +707,9 @@ button, button:hover, button:focus, button:active, a, a:hover, a:focus, a:active
                                         label{
                                             margin-bottom: 10px;
                                         }
-                                        input, textarea{
-                                            padding: 4px 10px;
-                                            border-radius: 0;
-                                            box-shadow: 0 0 0;
-                                            border-radius: 7px;
-                                            border-color: #e4e4e4;
-                                            transition: border .4s ease;
-                                            &:hover{
-                                                border-color: #94c4db;
-                                            }
-                                        }
                                         textarea{
                                             padding-top: 6px;
                                             padding-bottom: 6px;
-                                        }
-                                        input[type="submit"]{
-                                            border-radius: 9px;
-                                            border: 0;
                                         }
                                         .textarea-wrap{
                                             margin-bottom: 0;
@@ -497,18 +756,13 @@ button, button:hover, button:focus, button:active, a, a:hover, a:focus, a:active
                                                     padding: 3px 10px;
                                                     width: 100%;
                                                     height: auto;
-                                                    border-radius: 9px;
+                                                    margin-bottom: 10px;
                                                 }
                                                 input[type="submit"]{
-                                                    background-color: $wp-color;
-                                                    display: inline-block;
-                                                    color: #fff;
-                                                    margin: 0;
-                                                    border-radius: 9px;
-                                                    margin-top: 10px;
+                                                    vertical-align: middle;
                                                 }
                                                 button{
-                                                    display: block;
+                                                    display: inline-block;
                                                     color: #a6a6a6;
                                                     font-size: 12px;
                                                     text-decoration: none;
@@ -527,6 +781,14 @@ button, button:hover, button:focus, button:active, a, a:hover, a:focus, a:active
                                                     text-decoration: underline;
                                                 }
                                             }
+                                        }
+                                    }
+                                }
+                                &#dashboard_quick_press{
+                                    .inside{
+                                        .submit{
+                                            margin-top: 10px;
+                                            padding: 15px 0;
                                         }
                                     }
                                 }
@@ -549,10 +811,10 @@ button, button:hover, button:focus, button:active, a, a:hover, a:focus, a:active
                                                     border-radius: 35px;
                                                     border: 1px solid #d6d6d6;
                                                     &:hover, &.current{
-                                                        border-color: $wp-color;
-                                                        color: $wp-color;
+                                                        border-color: $wp-black;
+                                                        color: $wp-black;
                                                         span{
-                                                            color: $wp-color;
+                                                            color: $wp-black;
                                                         }
                                                     }
                                                 }
@@ -645,10 +907,10 @@ button, button:hover, button:focus, button:active, a, a:hover, a:focus, a:active
                                 font-weight: 500;
                                 transition: box-shadow .4s ease, color .4s ease;
                                 &:hover, &.current{
-                                    color: $wp-color;
-                                    box-shadow: 0 1px 0 0 $wp-color;
+                                    color: $wp-black;
+                                    box-shadow: 0 1px 0 0 $wp-black;
                                     span{
-                                        color: $wp-color;
+                                        color: $wp-black;
                                     }
                                 }
                             }
@@ -702,13 +964,11 @@ button, button:hover, button:focus, button:active, a, a:hover, a:focus, a:active
                             border-right: 0;
                             margin-right: -3px;
                             border-radius: 0;
-                            box-shadow: 0 0 0 0;
-                            border-color: #e4e4e4;
                         }
                         input[type="submit"]{
                             background-color: transparent;
                             display: inline-block;
-                            color: #0073aa;
+                            color: $wp-color;
                             padding: 4px 12px;
                             box-shadow: 0 0 0;
                             border-radius: 0;
@@ -722,41 +982,25 @@ button, button:hover, button:focus, button:active, a, a:hover, a:focus, a:active
                     }
                     .tablenav{
                         margin: 20px 0;
-                        select{
-                            padding: 4px 10px;
-                            border-color: #e4e4e4;
-                            box-shadow: 0 0 0 0;
-                            border-radius: 9px;
-                            padding-right: 25px;
-                        }
-                        input[type="submit"]{
-                            background-color: $wp-color;
-                            padding: 4px 10px;
-                            border-radius: 9px;
-                            color: #fff;
-                            border: 1px solid $wp-color;
-                        }
                     }
                     table.wp-list-table{
                         margin-top: 30px;
                         border-radius: 9px;
-                        overflow: hidden;
                         border-color: $wp-borde;
                         .inline-edit-row{
                             input, select, textarea{
-                                border-color: #e4e4e4;
                                 margin-bottom: 5px;
-                                box-shadow: 0 0 0;
-                                &:hover, &:focus{
-                                    color: $wp-black;
-                                    border-color: #94c4db;
-                                }
                             }
                         }
                     }
-                    .form-table{
+                    .form-table, #addtag{
                         border-collapse: separate;
                         border-spacing: 0 15px;
+                        .form-field{
+                            label{
+                                margin-bottom: 10px;
+                            }
+                        }
                         tbody{
                             tr{
                                 th{
@@ -775,46 +1019,6 @@ button, button:hover, button:focus, button:active, a, a:hover, a:focus, a:active
                                 }
                             }
                         }
-                        input:not([type="checkbox"]), select, textarea{
-                            padding: 5px 10px;
-                            border-radius: 9px;
-                            box-shadow: 0 0 0;
-                            border-color: $wp-borde;
-                            transition: border .4s ease, color .2s ease;
-                            &:hover, &:focus{
-                                color: #23282d;
-                                border-color: #94c4db;
-                            }
-                        }
-                        input[type="checkbox"]{
-                            box-shadow: 0 0 0;
-                            border-color: $wp-borde;
-                            &:hover, &:focus{
-                                border-color: #94c4db;
-                            }
-                        }
-                        select{
-                            padding-right: 25px;
-                        }
-                        &.tools-privacy-policy-page{
-                            input[type="submit"]{
-                                background-color: $wp-color;
-                                color: #fff;
-                                box-shadow: 0 0 0;
-                                border: 1px solid $wp-color;
-                            }
-                        }
-                    }
-                    textarea#ping_sites{
-                        padding: 5px 10px;
-                        border-radius: 9px;
-                        box-shadow: 0 0 0;
-                        border-color: $wp-borde;
-                        transition: border .4s ease, color .2s ease;
-                        &:hover, &:focus{
-                            color: $wp-black;
-                            border-color: #94c4db;
-                        }
                     }
                     .submit{
                         margin-bottom: 0;
@@ -822,22 +1026,52 @@ button, button:hover, button:focus, button:active, a, a:hover, a:focus, a:active
                         text-align: center;
                         margin-top: 40px;
                         border-top: 1px solid $wp-borde;
-                        input[type="submit"]{
-                            background-color: transparent;
-                            padding: 5px 15px;
-                            color: #4caf50;
-                            border-radius: 9px;
-                            border-color: #4caf50;
-                            transition: background .4s ease, color .2s ease;
-                            &:hover{
-                                background-color: #4caf50;
-                                color: #fff;
-                            }
+                    }
+                }
+                .woocommerce-layout{
+                    padding-top: 61px;
+                }
+            }
+        }
+        .media-frame{
+            .media-toolbar{
+                border-radius: 9px;
+                box-shadow: 0 0 0;
+                border: 1px solid $wp-borde;
+                .view-switch{
+                    padding: 0;
+                }
+                .media-toolbar-primary{
+                    margin: 0;
+                }
+                select{
+                    vertical-align: top;
+                }
+            }
+        }
+        #woocommerce-embedded-root{
+            .woocommerce-layout{
+                .woocommerce-layout__header{
+                    top: 73px;
+                    transition: top .5s ease;
+                    .woocommerce-layout__activity-panel{
+                        top: 73px;
+                        transition: top .5s ease;
+                    }
+                    &.is-scrolled{
+                        top: 0;
+                        .woocommerce-layout__activity-panel{
+                            top: 0;
                         }
                     }
                 }
             }
         }
+    }
+    #wpfooter{
+        margin-left: 250px;
+        padding-right: 20px;
+        padding-top: 20px;        
     }
 }
 .is-dragging-metaboxes{
@@ -870,5 +1104,5 @@ button, button:hover, button:focus, button:active, a, a:hover, a:focus, a:active
     }
 }
 body.folded{
-    @import 'blocks/adminmenumain';
+    @import 'blocks/folded';
 }

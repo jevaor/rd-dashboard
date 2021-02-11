@@ -1,7 +1,7 @@
 // NO INCLUIR CSS AQUI
 
 #wpwrap{
-    #wpcontent{
+    #wpcontent, #wpfooter{
         margin-left: 60px;
         #wpadminbar{
             position: relative;
@@ -29,16 +29,26 @@
                         align-items: center;
                         .wp-menu-image{
                             position: relative;
-                            width: auto;
-                            height: auto;
+                            display: flex;
+                            width: 20px;
+                            height: 20px;
+                            align-items: center;
+                            justify-content: center;
+                            img{
+                                padding: 0;
+                            }
                             &:before{
                                 padding: 0;
                             }
                         }
+                        .update-plugins{
+                            background-color: #868996;
+                            right: 20px;
+                            color: #ffffff;
+                            margin-left: 0;
+                            box-shadow: 0 0 0 1px #868996;
+                        }
                         
-                    }
-                    &.current:hover > a, &.wp-has-current-submenu:hover > a{
-                        background-color: $wp-color;
                     }
                     .wp-submenu{
                         background-color: #fff;
@@ -63,11 +73,6 @@
                                 display: block;
                                 width: 100%;
                                 height: auto;
-                                color: #545e69;
-                                &:hover{
-                                    background-color: #e6ecef;
-                                    color: $wp-color;
-                                }
                             }
                         }
                     }
@@ -85,16 +90,22 @@
                                 display: none;
                             }
                             li{
-                                margin-bottom: 5px;
+                                margin-bottom: 8px;
                                 a{
                                     border-radius: 9px;
+                                    padding: 10px;
                                     border: 0;
+                                    font-weight: 500;
                                     transition: background .4s ease, color .4s ease;
+                                    &:hover{
+                                        background-color: $fondo-hover-submenu;
+                                        color: #696d7d;
+                                    }
                                 }
                                 &.current{
                                     a{
-                                        background-color: $wp-color;
-                                        color: #fff;
+                                        background-color: $fondo-hover-submenu;
+                                        color: #696d7d;
                                     }
                                 }
                                 &:last-of-type{

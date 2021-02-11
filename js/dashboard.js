@@ -13,4 +13,10 @@ jQuery(function(){
     //     }
     
     // });
+
+    // Scrollbar
+
+    // new SimpleBar(document.getElementById('adminmenuwrap'), {
+    //     forceVisible: true|'x'|'y'
+    // });
 });
