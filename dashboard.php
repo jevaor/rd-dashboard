@@ -11,7 +11,7 @@
  * Plugin Name:       RD Dashboard
  * Plugin URI:        https://vaor.me/rd-dashboard
  * Description:       Another way to look the dashboard
- * Version:           0.4
+ * Version:           0.5
  * Requires at least: 5.2
  * Requires PHP:      7.2
  * Author:            Jonatan Vargas

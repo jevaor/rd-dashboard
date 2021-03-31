@@ -13,11 +13,14 @@
         #adminmenuback, #adminmenuwrap, #adminmenuwrap #adminmenu, #adminmenuwrap #adminmenu .wp-submenu{
             padding: 0;
             max-width: 60px;
+            @media (max-width: 782px){
+                max-width: 220px;
+            }
         }
         #adminmenuwrap{
             ul#adminmenu{
                 li{
-                    margin: 10px 0;
+                    margin: 6px 0;
                     width: 100%;
                     display: block;
                     text-align: center;
@@ -42,26 +45,22 @@
                             }
                         }
                         .update-plugins{
-                            background-color: #868996;
+                            background-color: $wp-color;
                             right: 20px;
                             color: #ffffff;
                             margin-left: 0;
-                            box-shadow: 0 0 0 1px #868996;
                         }
                         
                     }
                     .wp-submenu{
                         background-color: #fff;
                         position: absolute;
-                        left: 99%;
                         opacity: 0;
                         top: 0;
-                        padding: 10px;
+                        padding: 0;
                         visibility: hidden;
-                        border-radius: 9px;
                         transform: scale(.95);
-                        left: calc(100% + 10px);
-                        box-shadow: 0px 3px 8px 0px #23282d1f;
+                        left: 100%;
                         transition: opacity .3s ease, visibility .4s ease, left .4s ease, transform .4s;
                         .wp-submenu-head{
                             display: none;
@@ -86,26 +85,30 @@
                     &.wp-has-current-submenu{
                         ul.wp-submenu{
                             margin: 0;
+                            border: 0;
+                            box-shadow: 3px 3px 8px 0px #23282d1f;
                             &:before{
                                 display: none;
                             }
                             li{
-                                margin-bottom: 8px;
+                                margin-bottom: 0;
                                 a{
-                                    border-radius: 9px;
+                                    border-radius: 0;
                                     padding: 10px;
+                                    color: #9b9da7;
                                     border: 0;
-                                    font-weight: 500;
+                                    font-weight: 400;
+                                    box-shadow: 0 0 0;
                                     transition: background .4s ease, color .4s ease;
                                     &:hover{
-                                        background-color: $fondo-hover-submenu;
-                                        color: #696d7d;
+                                        background-color: $fondo-hover-menu;
+                                        color: $wp-color;
                                     }
                                 }
                                 &.current{
                                     a{
-                                        background-color: $fondo-hover-submenu;
-                                        color: #696d7d;
+                                        background-color: $fondo-hover-menu;
+                                        color: $wp-color;
                                     }
                                 }
                                 &:last-of-type{
@@ -121,6 +124,22 @@
                                 position: relative;
                                 display: inline-block;
                             }
+                        }
+                    }
+                    &:first-of-type{
+                        margin: 15px 0;
+                    }
+                }
+            }
+        }
+    }
+    #wpcontent{
+        #wpbody{
+            #wpbody-content{
+                .wrap{
+                    .woocommerce-layout{
+                        .woocommerce-layout__header{
+                            left: 60px;
                         }
                     }
                 }
